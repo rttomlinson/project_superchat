@@ -5,6 +5,14 @@ const io = require("socket.io")(server);
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const chatOps = require("./lib/chatOps");
+const wagner = require("wagner-core");
+
+require("./dependencies")(wagner);
+//require("./serversideIOOps")(io)
+require("./lib/serverSideIOOps")(io);
+
+
+
 
 //Require routes
 const index = require("./routes/index.js")(io);
