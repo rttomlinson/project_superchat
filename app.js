@@ -4,7 +4,7 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const chatOps = require("./lib/chatOps");
+//const chatOps = require("./lib/chatOps");
 const wagner = require("wagner-core");
 
 require("./dependencies")(wagner);
@@ -49,41 +49,41 @@ app.use(function(err, req, res, next) {
 });
 
 /////////////////////
-io.on("connection", client => {
-  console.log("New connection!");
-  //send the client the data
-  //display all message of the default chatroom
-  let pro = Promise.all([
-    chatOps.buildMessageTable("default"),
-    chatOps.buildRoomsTable()
-  ]);
-  pro.then(function onFulfilled(infoObj) {
-    client.emit("connection", { messages: infoObj[0], rooms: infoObj[1] });
-  });
+// io.on("connection", client => {
+//   console.log("New connection!");
+//   //send the client the data
+//   //display all message of the default chatroom
+//   let pro = Promise.all([
+//     chatOps.buildMessageTable("default"),
+//     chatOps.buildRoomsTable()
+//   ]);
+//   pro.then(function onFulfilled(infoObj) {
+//     client.emit("connection", { messages: infoObj[0], rooms: infoObj[1] });
+//   });
 
-  client.on("new room", room => {
-    //io.emit(new room) tells all the clients to update their rooms
-    let pro = chatOps.makeNewRoom(room);
-    pro.then(htmlString => {
-      if (htmlString) {
-        io.emit("new room", htmlString);
-      }
-    });
-  });
-  client.on("new message", data => {
-    //io.emit(new room) tells all the clients to update their rooms
-    let htmlString = chatOps.makeNewMessage(data);
-    if (htmlString) {
-      let room = data.room;
-      io.emit("new message", { htmlString, room });
-    }
-  });
+//   client.on("new room", room => {
+//     //io.emit(new room) tells all the clients to update their rooms
+//     let pro = chatOps.makeNewRoom(room);
+//     pro.then(htmlString => {
+//       if (htmlString) {
+//         io.emit("new room", htmlString);
+//       }
+//     });
+//   });
+//   client.on("new message", data => {
+//     //io.emit(new room) tells all the clients to update their rooms
+//     let htmlString = chatOps.makeNewMessage(data);
+//     if (htmlString) {
+//       let room = data.room;
+//       io.emit("new message", { htmlString, room });
+//     }
+//   });
 
-  client.on("room-change", room => {
-    chatOps.buildMessageTable(room).then(function onFulfilled(messages) {
-      client.emit("room-change", { messages });
-    });
-  });
-});
+//   client.on("room-change", room => {
+//     chatOps.buildMessageTable(room).then(function onFulfilled(messages) {
+//       client.emit("room-change", { messages });
+//     });
+//   });
+// });
 
 server.listen(process.env.PORT || 3000);
