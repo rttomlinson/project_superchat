@@ -1,8 +1,10 @@
+const express = require("express");
+//const router = express.Router();
+const router = express.Router();
+
+
 let injectedRoute = io => {
-  const express = require("express");
-  //const router = express.Router();
-  const router = express.Router();
-  const chatOps = require("../lib/chatOps");
+  
 
   router.get("/", (req, res) => {
     console.log("root path hit in index.js");
