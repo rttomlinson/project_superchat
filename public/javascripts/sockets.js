@@ -26,6 +26,8 @@ $(document).ready(function() {
   socket.on("connection", data => {
     console.log("We got connected!");
     console.log(`data is ${data}`);
+    //Set current room to default
+    $(".currentRoom").text("Default");
 
     $("#messages tbody").html(data.messages);
 
@@ -48,6 +50,7 @@ $(document).ready(function() {
     event.preventDefault();
     let newRoom = $("#chatroomID").val();
     socket.emit("new room", newRoom);
+    $(".currentRoom").text(newRoom);
     return false;
   });
 
@@ -77,6 +80,8 @@ $(document).ready(function() {
     //emit roomchange event to server
     socket.emit("room-change", event.currentTarget.id);
     ___currentRoom = event.currentTarget.id;
+    //update current room on page
+    $(".currentRoom").text(___currentRoom);
   });
 
   socket.on("room-change", data => {
