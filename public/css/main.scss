@@ -1,0 +1,36 @@
+$aside-width: 200px;
+
+aside {
+    width: $aside-width;
+    float: left;
+}
+
+aside > table{
+    height: 100%;
+}
+
+main {
+    width: calc(100% - 200px);
+    height: calc(100vh - 72px);
+    float: right;
+    position: relative;
+}
+
+main > .container-fluid {
+    height: 100%;
+}
+
+
+#messagesRow {
+    height: calc(100% - 143px);
+    overflow: scroll;
+}
+
+
+#messageInput {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+

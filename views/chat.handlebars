@@ -1,46 +1,46 @@
-<form id="newRoom" class="form-inline">
-  <div class="form-group">
-    <label for="chatroomID">New Chat Room</label>
-    <input type="text" class="form-control" id="chatroomID" name="chatroomID">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
 <div class="row">
-  <div class="col-xs-4">
-    <table id="rooms" class="table">
-      <thead>
-        <tr>
-          <th>Chatrooms</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-
-  </div>
-  <div class="col-xs-4">
-    <table id="messages" class="table">
-      <thead>
-        <tr>
-          <th>Messages</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
-
-
-  <div class="col-xs-4">
-    <form id="newMessage">
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea class="form-control" id="message" name="message">
-        </textarea>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+    <form id="newRoom" class="">
+        <div class="form-group col-xs-12">
+            <label for="chatroomID">New Chat Room</label>
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" id="chatroomID" name="chatroomID">
+                </div>
+                <div class="col-xs-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
     </form>
-  </div>
+</div>
+<div class="row" id="messagesRow">
+    <div class="col-xs-12">
+        <table id="messages" class="table">
+            <thead>
+                <tr>
+                    <th>Messages</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row" id="messageInput">
+    <form id="newMessage" class="">
+        <div class="form-group col-xs-12">
+            <label for="message"></label>
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="text" class="form-control" id="message" name="message">
+                </div>
+                <div class="col-xs-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 

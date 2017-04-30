@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "sass": "node-sass ./public/css/*.scss --output ./public/css",
+    "sass-watch": "node-sass --watch ./public/css/*.scss --output ./public/css"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "http": "0.0.0",
+    "node-sass": "^4.5.2",
     "path": "^0.12.7",
     "redis": "^2.7.1",
     "shorthash": "0.0.2",
